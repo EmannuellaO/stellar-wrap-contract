@@ -342,16 +342,16 @@
     "message": "This bridge request is not pending. Wait for it to change state, then try again."
   },
   {
-    "variant": "BridgeRequestAlreadyRefunded",
-    "code": 59,
-    "actionable": false,
-    "message": "This bridge request has already been refunded."
-  },
-  {
     "variant": "BridgeRefundDelayNotElapsed",
     "code": 58,
     "actionable": true,
     "message": "The bridge refund delay has not elapsed yet. Wait for the delay to pass, then try again."
+  },
+  {
+    "variant": "BridgeRequestAlreadyRefunded",
+    "code": 59,
+    "actionable": false,
+    "message": "This bridge request has already been refunded."
   },
   {
     "variant": "StaleProposal",
@@ -370,5 +370,11 @@
     "code": 62,
     "actionable": true,
     "message": "The signature has expired. Request a new signature and try again."
+  },
+  {
+    "variant": "InvalidDataHash",
+    "code": 63,
+    "actionable": true,
+    "message": "The data hash is all zeros. Recompute it from the wrap data and resubmit."
   }
 ]

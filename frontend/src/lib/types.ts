@@ -34,9 +34,8 @@ export type WrapRecord = {
   /** Raw period as stored on-chain, in `YYYYMM` form. */
   period: bigint;
   /**
-   * Lifecycle flags for the record. Optional so callers that only care
-   * about the happy path can ignore them; a record with none of them set
-   * is treated as active.
+   * Current lifecycle state of the record. Optional so existing callers that
+   * only use the legacy query shape remain compatible.
    */
   revoked?: boolean;
   burned?: boolean;
@@ -44,16 +43,22 @@ export type WrapRecord = {
   optedOut?: boolean;
 };
 
+export type WrapView = {
+  record: WrapRecord;
+  isExpired: boolean;
+  liveUntilLedger: bigint;
+};
+
 export type Dashboard = {
-  balance: bigint;
   health: ContractHealth;
+  balance: bigint;
   latestWrap: WrapRecord | null;
   records: WrapRecord[];
 };
 
 export type MintInput = {
-  period: bigint;
   archetype: string;
   dataHash: Uint8Array;
+  period: bigint;
   signature: Uint8Array;
 };
